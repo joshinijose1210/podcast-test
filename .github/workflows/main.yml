@@ -21,6 +21,12 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add .
+
+          if git diff --cached --quiet; then
+            echo " no changes to commit. "
+            exit 0
+          fi
+          
           git commit -m "modified feed" 
           git push 
         
